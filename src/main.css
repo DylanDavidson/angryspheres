@@ -29,6 +29,12 @@ canvas {
   user-select: none;
 }
 
+.button.disabled {
+  background-color: white;
+  cursor: default !important;
+  color: black;
+}
+
 .button .arrow-left {
   width: 0;
   height: 0;

@@ -6,6 +6,7 @@ var Controls = function()
   this.velocity = Controls.DEFAULT_VELOCITY;
   this.angle = Controls.DEFAULT_ANGLE;
   this.direction = Controls.DEFAULT_DIRECTION;
+  this.fire_disabled = false;
 
   this.velocity_span = document.getElementById('velocity');
   this.velocity_up = document.getElementById('velocity-up');
@@ -80,10 +81,17 @@ Controls.prototype = {
   },
 
   fire: function() {
+    if(this.fire_disabled)
+      return;
+
+    this.fire_button.classList.add('disabled');
+    this.fire_disabled = true;
     game.ball.fire(this.velocity, this.angle, this.direction);
   },
 
   reset: function() {
+    this.fire_button.classList.remove('disabled');
+    this.fire_disabled = false;
     game.ball.reset();
   }
 }
