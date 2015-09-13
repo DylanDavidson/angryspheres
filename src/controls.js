@@ -61,7 +61,7 @@ Controls.prototype = {
   },
 
   angleUp: function() {
-    if(this.angle <= 30)
+    if(this.angle >= 30)
       return;
 
     this.angle += 1;
