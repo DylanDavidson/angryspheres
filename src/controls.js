@@ -45,6 +45,9 @@ Controls.prototype = {
   },
 
   velocityUp: function() {
+    if(this.velocity >= 20)
+      return;
+
     this.velocity += 1;
     this.velocity_span.innerHTML = this.velocity;
   },
@@ -58,6 +61,9 @@ Controls.prototype = {
   },
 
   angleUp: function() {
+    if(this.angle <= 30)
+      return;
+
     this.angle += 1;
     this.angle_span.innerHTML = this.angle + '°';
   },
@@ -71,11 +77,17 @@ Controls.prototype = {
   },
 
   directionLeft: function() {
+    if(this.direction <= -30)
+      return;
+
     this.direction -= 1;
     this.direction_span.innerHTML = this.direction + '°';
   },
 
   directionRight: function() {
+    if(this.direction >= 30)
+      return;
+
     this.direction += 1;
     this.direction_span.innerHTML = this.direction + '°';
   },

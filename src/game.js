@@ -6,6 +6,7 @@ var Game = function()
   this.cube2 = new Cube(-5,55,5.5);
   this.cube3 = new Cube(5,55,5.5);
   this.ball = new Ball();
+  this.enemies = [new Enemy(0,50,13), new Enemy(-5,55,13), new Enemy(5,55,13)];
 }
 
 function render()

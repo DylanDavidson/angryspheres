@@ -51,6 +51,12 @@ Base.prototype.addToScene = function(object)
   this.scene.add(object);
 }
 
+// Adds given object to the scene
+Base.prototype.removeFromScene = function(object)
+{
+  this.scene.remove(object);
+}
+
 // Called every frame to render the scene
 Base.prototype.render = function()
 {
