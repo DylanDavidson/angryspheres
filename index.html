@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Libraries -->
+    <script type="text/javascript" src="libs/three.min.js"></script>
+    <script type="text/javascript" src="libs/physi.js"></script>
+    <script type="text/javascript">
+      Physijs.scripts.worker = "libs/physijs_worker.js";
+      Physijs.scripts.ammo = "ammo.js";
+    </script>
+
+    <!-- Local Scripts -->
+    <script type="text/javascript" src="src/game.js"></script>
+    <script type="text/javascript" src="src/base.js"></script>
+    <script type="text/javascript" src="src/three_object.js"></script>
+    <script type="text/javascript" src="src/floor.js"></script>
+    <script type="text/javascript" src="src/cube.js"></script>
+    <script type="text/javascript" src="src/ball.js"></script>
+    <script type="text/javascript" src="src/controls.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="src/main.css">
+  </head>
+  <body>
+    <div class="button">
+      <div class="arrow-left" id="velocity-down"></div>
+      <div class="text">
+        Velocity
+        <h1 id="velocity">10</h1>
+      </div>
+      <div class="arrow-right" id="velocity-up"></div>
+    </div>
+
+    <div class="button">
+      <div class="arrow-left" id="angle-down"></div>
+      <div class="text">
+        Angle
+        <h1 id="angle">10°</h1>
+      </div>
+      <div class="arrow-right" id="angle-up"></div>
+    </div>
+
+    <div class="button">
+      <div class="arrow-left" id="direction-left"></div>
+      <div class="text">
+        Direction
+        <h1 id="direction">0°</h1>
+      </div>
+      <div class="arrow-right" id="direction-right"></div>
+    </div>
+
+    <div class="button full" id="fire">
+      <div class="text">
+        <h1>Fire</h1>
+      </div>
+    </div>
+    </div>
+  </body>
+
+</html>

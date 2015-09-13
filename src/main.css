@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.button {
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid white;
+
+  color: white;
+
+  padding: 20px 20px 0 20px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.button .arrow-left {
+  width: 0;
+  height: 0;
+
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-right: 30px solid white;
+
+  display: inline-block;
+
+  cursor: pointer;
+}
+
+.button .arrow-right {
+  width: 0;
+  height: 0;
+
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid white;
+
+  display: inline-block;
+
+  cursor: pointer;
+}
+
+.button .text {
+  text-align: center;
+  padding: 0 30px;
+  display: inline-block;
+}
+
+.button.full:hover {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+}

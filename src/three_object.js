@@ -1,0 +1,4 @@
+var ThreeObject = function()
+{
+
+}
