@@ -20,6 +20,7 @@ var Controls = function()
   this.direction_left = document.getElementById('direction-left');
 
   this.fire_button = document.getElementById('fire');
+  this.reset_button = document.getElementById('reset');
 
   this.velocity_span.innerHTML = this.velocity;
   this.angle_span.innerHTML = this.angle + '°';
@@ -39,6 +40,7 @@ Controls.prototype = {
     this.direction_left.addEventListener('click', this.directionLeft.bind(this));
 
     this.fire_button.addEventListener('click', this.fire.bind(this));
+    this.reset_button.addEventListener('click', this.reset.bind(this));
   },
 
   velocityUp: function() {
@@ -79,5 +81,9 @@ Controls.prototype = {
 
   fire: function() {
     game.ball.fire(this.velocity, this.angle, this.direction);
+  },
+
+  reset: function() {
+    game.ball.reset();
   }
 }

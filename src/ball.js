@@ -7,6 +7,7 @@ var Ball= function()
   Ball.VELOCITY_MULTIPLIER = 100;
   Ball.ANGLE_MULTIPLIER = 10;
   Ball.DIRECTION_MULTIPLIER = 10;
+  Ball.START_POSITION = new THREE.Vector3(0,-30,3);
 
   ThreeObject.call(this);
 
@@ -16,7 +17,7 @@ var Ball= function()
   this.object = new Physijs.SphereMesh(this.geometry, this.material, 10);
 
   this.object.castShadow = true;
-  this.object.position.set(0,-30,3);
+  this.object.position.set(Ball.START_POSITION.x,Ball.START_POSITION.y,Ball.START_POSITION.z);
   base.addToScene(this.object);
 }
 
@@ -32,4 +33,12 @@ Ball.prototype.forceVector = function(velocity, angle, direction) {
       velocity * Ball.VELOCITY_MULTIPLIER,
       angle * Ball.ANGLE_MULTIPLIER
   );
+}
+
+Ball.prototype.reset = function() {
+  var emptyVector = new THREE.Vector3(0,0,0);
+  this.object.setLinearVelocity(emptyVector);
+  this.object.setAngularVelocity(emptyVector);
+  this.object.position.set(Ball.START_POSITION.x,Ball.START_POSITION.y,Ball.START_POSITION.z);
+  this.object.__dirtyPosition = true;
 }
