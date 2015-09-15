@@ -1,4 +1,4 @@
-var Enemy = function(x,y,z) {
+var Enemy = function(position) {
   Enemy.COLOR = 0x2ecc71;
 
   ThreeObject.call(this);
@@ -6,7 +6,7 @@ var Enemy = function(x,y,z) {
   this.material = new THREE.MeshBasicMaterial({ color: Enemy.COLOR });
   this.object = new Physijs.SphereMesh(this.geometry, this.material, 10);
 
-  this.object.position.set(x,y,z);
+  this.object.position.set(position.x, position.y, position.z);
 
   this.object.addEventListener('collision', this.collision.bind(this));
 
@@ -19,6 +19,7 @@ Enemy.prototype.collision = function(other_object) {
   if(other_object == game.ball.object || other_object == game.floor.object)
   {
     game.addParticles(new Particle(this.object.position));
+    game.removeEnemy(this);
     base.removeFromScene(this.object);
   }
 }

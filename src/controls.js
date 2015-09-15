@@ -101,9 +101,14 @@ Controls.prototype = {
     game.ball.fire(this.velocity, this.angle, this.direction);
   },
 
-  reset: function() {
+  resetFireButton: function() {
     this.fire_button.classList.remove('disabled');
     this.fire_disabled = false;
+  },
+
+  reset: function() {
+    this.resetFireButton();
+    game.reset();
     game.ball.reset();
   }
 }

@@ -2,15 +2,66 @@ var Game = function()
 {
   this.controls = new Controls();
   this.floor = new Floor();
-  this.cube1 = new Cube(0,50,5.5);
-  this.cube2 = new Cube(-5,55,5.5);
-  this.cube3 = new Cube(5,55,5.5);
   this.ball = new Ball();
-  this.enemies = [new Enemy(0,50,13), new Enemy(-5,55,13), new Enemy(5,55,13)];
-  this.particles = [];
+
+  this.current_level = 1;
+  this.loadLevel();
 }
 
 Game.prototype = {
+  loadLevel: function() {
+    this.level = Game.LEVELS[this.current_level];
+
+    this.cubes = [];
+    this.enemies = [];
+    this.particles = [];
+
+    for(var i = 0; i < this.level.cubes.length; i++)
+    {
+      this.cubes.push(new Cube(this.level.cubes[i]));
+    }
+
+    for(var i = 0; i < this.level.enemies.length; i++)
+    {
+      this.enemies.push(new Enemy(this.level.enemies[i]));
+    }
+  },
+
+  reset: function() {
+    if(this.current_level >= Game.LEVELS.length)
+    {
+      this.current_level = 0;
+    }
+
+    for(var i = 0; i < this.cubes.length; i++)
+    {
+      base.removeFromScene(this.cubes[i].object);
+    }
+
+    for(var i = 0; i < this.enemies.length; i++)
+    {
+      base.removeFromScene(this.enemies[i].object);
+    }
+
+    for(var i = 0; i < this.particles.length; i++)
+    {
+      base.removeFromScene(this.particles[i].object);
+    }
+
+    this.loadLevel();
+    this.controls.resetFireButton();
+    this.ball.reset();
+  },
+
+  removeEnemy: function(enemy) {
+    this.enemies.splice(this.enemies.indexOf(enemy), 1);
+    if(this.enemies.length <= 0)
+    {
+      this.current_level += 1;
+      this.reset();
+    }
+  },
+
   addParticles: function(particles) {
     this.particles.push(particles);
   },

@@ -1,7 +1,7 @@
 // Dylan Davidson
 // AngryBirds - CAP 4720
 //
-var Cube = function(x, y, z)
+var Cube = function(position)
 {
   Cube.COLOR = 0xBC8151;
   Cube.TEXTURE = THREE.ImageUtils.loadTexture("textures/wood.png");
@@ -16,7 +16,7 @@ var Cube = function(x, y, z)
   this.object = new Physijs.BoxMesh(this.geometry, this.material, 20);
 
   this.object.castShadow = true;
-  this.object.position.set(x,y,z);
+  this.object.position.set(position.x, position.y, position.z);
   base.addToScene(this.object);
 }
 
