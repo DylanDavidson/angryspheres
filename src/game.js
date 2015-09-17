@@ -3,6 +3,7 @@ var Game = function()
   this.controls = new Controls();
   this.floor = new Floor();
   this.ball = new Ball();
+  this.banner = new Banner();
 
   this.current_level = 1;
   this.loadLevel();
@@ -11,6 +12,8 @@ var Game = function()
 Game.prototype = {
   loadLevel: function() {
     this.level = Game.LEVELS[this.current_level];
+
+    this.banner.showText("LEVEL " + this.current_level);
 
     this.cubes = [];
     this.enemies = [];
@@ -87,6 +90,7 @@ var base;
 window.onload = function()
 {
   base = new Base();
+
   game = new Game();
   render();
 }
