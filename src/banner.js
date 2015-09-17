@@ -5,6 +5,7 @@ var Banner = function() {
 Banner.prototype = {
   showText: function(text) {
     this.banner.style.display = "block";
+    this.banner.innerHTML = text;
 
     setTimeout(this.hideText.bind(this), 1500);
   },

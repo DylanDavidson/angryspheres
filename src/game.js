@@ -4,51 +4,23 @@ var Game = function()
   this.floor = new Floor();
   this.ball = new Ball();
   this.banner = new Banner();
+  this.castle_factory = new CastleFactory();
 
-  this.current_level = 1;
+  this.current_level = 0;
   this.loadLevel();
 }
 
 Game.prototype = {
   loadLevel: function() {
-    this.level = Game.LEVELS[this.current_level];
+    this.castle_factory.createCastle(this.current_level);
 
-    this.banner.showText("LEVEL " + this.current_level);
-
-    this.cubes = [];
-    this.enemies = [];
-    this.particles = [];
-
-    for(var i = 0; i < this.level.cubes.length; i++)
-    {
-      this.cubes.push(new Cube(this.level.cubes[i]));
-    }
-
-    for(var i = 0; i < this.level.enemies.length; i++)
-    {
-      this.enemies.push(new Enemy(this.level.enemies[i]));
-    }
+    this.banner.showText("LEVEL " + (this.current_level + 1));
   },
 
   reset: function() {
-    if(this.current_level >= Game.LEVELS.length)
+    if(this.current_level >= CastleFactory.LEVELS.length)
     {
       this.current_level = 0;
-    }
-
-    for(var i = 0; i < this.cubes.length; i++)
-    {
-      base.removeFromScene(this.cubes[i].object);
-    }
-
-    for(var i = 0; i < this.enemies.length; i++)
-    {
-      base.removeFromScene(this.enemies[i].object);
-    }
-
-    for(var i = 0; i < this.particles.length; i++)
-    {
-      base.removeFromScene(this.particles[i].object);
     }
 
     this.loadLevel();
@@ -57,29 +29,21 @@ Game.prototype = {
   },
 
   removeEnemy: function(enemy) {
-    this.enemies.splice(this.enemies.indexOf(enemy), 1);
-    if(this.enemies.length <= 0)
-    {
-      this.current_level += 1;
-      this.reset();
-    }
-  },
-
-  addParticles: function(particles) {
-    this.particles.push(particles);
+   nextLevel = this.castle_factory.removeEnemy(enemy);
+   if(nextLevel) {
+     this.current_level += 1;
+     this.reset();
+   }
   },
 
   removeParticles: function(particles) {
-    this.particles.splice(this.particles.indexOf(particles), 1);
+    this.castle_factory.removeParticles(particles);
   }
 }
 
 function render()
 {
-  for(index in game.particles)
-  {
-    game.particles[index].update();
-  }
+  game.castle_factory.updateParticles();
   base.render();
   requestAnimationFrame(render);
 }
