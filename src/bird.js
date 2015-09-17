@@ -8,7 +8,7 @@ var Bird= function()
   Bird.ANGLE_MULTIPLIER = 10;
   Bird.DIRECTION_MULTIPLIER = 10;
   Bird.START_POSITION = new THREE.Vector3(0,-30,3);
-  Bird.AMMO_TYPES = ["Sphere", "Cube", "Cylinder"];
+  Bird.AMMO_TYPES = ["Sphere", "Cube", "Hexagon"];
 
   ThreeObject.call(this);
 

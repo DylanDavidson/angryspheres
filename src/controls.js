@@ -31,9 +31,34 @@ var Controls = function()
   this.angle_span.innerHTML = this.angle + '°';
 
   this.addClickListeners();
+
+  window.onkeydown = this.onkeydown.bind(this);
 }
 
 Controls.prototype = {
+  onkeydown: function(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+
+    if(key == 37) // Left Arrow
+      this.directionLeft();
+    else if(key == 38) // Up Arrow
+      this.angleUp();
+    else if(key == 39) // Right Arrow
+      this.directionRight();
+    else if(key == 40) // Down Arrow
+      this.angleDown();
+    else if(key == 13) // Enter
+      this.fire();
+    else if(key == 82) // R
+      this.reset();
+    else if(key == 32) // Space
+      this.ammoRight();
+    else if(key == 87) // W
+      this.velocityUp();
+    else if(key == 83) // S
+      this.velocityDown();
+  },
+
   addClickListeners: function() {
     this.velocity_up.addEventListener('click', this.velocityUp.bind(this));
     this.velocity_down.addEventListener('click', this.velocityDown.bind(this));
