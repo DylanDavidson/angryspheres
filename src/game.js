@@ -2,7 +2,7 @@ var Game = function()
 {
   this.controls = new Controls();
   this.floor = new Floor();
-  this.ball = new Ball();
+  this.bird = new Bird();
   this.banner = new Banner();
   this.castle_factory = new CastleFactory();
 
@@ -25,7 +25,7 @@ Game.prototype = {
 
     this.loadLevel();
     this.controls.resetFireButton();
-    this.ball.reset();
+    this.bird.reset();
   },
 
   removeEnemy: function(enemy) {

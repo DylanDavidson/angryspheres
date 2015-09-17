@@ -20,6 +20,10 @@ var Controls = function()
   this.direction_right = document.getElementById('direction-right');
   this.direction_left = document.getElementById('direction-left');
 
+  this.ammo_span = document.getElementById('ammo');
+  this.ammo_right = document.getElementById('ammo-right');
+  this.ammo_left = document.getElementById('ammo-left');
+
   this.fire_button = document.getElementById('fire');
   this.reset_button = document.getElementById('reset');
 
@@ -39,6 +43,9 @@ Controls.prototype = {
 
     this.direction_right.addEventListener('click', this.directionRight.bind(this));
     this.direction_left.addEventListener('click', this.directionLeft.bind(this));
+
+    this.ammo_left.addEventListener('click', this.ammoRight.bind(this));
+    this.ammo_right.addEventListener('click', this.ammoLeft.bind(this));
 
     this.fire_button.addEventListener('click', this.fire.bind(this));
     this.reset_button.addEventListener('click', this.reset.bind(this));
@@ -92,13 +99,23 @@ Controls.prototype = {
     this.direction_span.innerHTML = this.direction + '°';
   },
 
+  ammoRight: function() {
+    var text = game.bird.nextAmmoRight();
+    this.ammo_span.innerHTML = text;
+  },
+
+  ammoLeft: function() {
+    var text = game.bird.nextAmmoLeft();
+    this.ammo_span.innerHTML = text;
+  },
+
   fire: function() {
     if(this.fire_disabled)
       return;
 
     this.fire_button.classList.add('disabled');
     this.fire_disabled = true;
-    game.ball.fire(this.velocity, this.angle, this.direction);
+    game.bird.fire(this.velocity, this.angle, this.direction);
   },
 
   resetFireButton: function() {
@@ -109,6 +126,6 @@ Controls.prototype = {
   reset: function() {
     this.resetFireButton();
     game.reset();
-    game.ball.reset();
+    game.bird.reset();
   }
 }

@@ -16,7 +16,7 @@ var Enemy = function(position) {
 Enemy.prototype = Object.create(ThreeObject.prototype);
 
 Enemy.prototype.collision = function(other_object) {
-  if(other_object == game.ball.object || other_object == game.floor.object)
+  if(other_object == game.bird.object || other_object == game.floor.object)
   {
     game.removeEnemy(this);
     base.removeFromScene(this.object);
