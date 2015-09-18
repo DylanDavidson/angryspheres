@@ -2,6 +2,7 @@ var CastleFactory = function() {
   this.cubes = [];
   this.enemies = [];
   this.particles = [];
+  this.score = new Score();
 }
 
 CastleFactory.prototype = {
@@ -22,6 +23,8 @@ CastleFactory.prototype = {
     {
       this.enemies.push(new Enemy(this.level.enemies[i]));
     }
+
+    this.score.setScore(this.enemies.length);
   },
 
   updateParticles: function() {
@@ -38,6 +41,8 @@ CastleFactory.prototype = {
 
     if(this.enemies.length <= 0)
       return true;
+
+    this.score.setScore(this.enemies.length);
 
     return false;
   },

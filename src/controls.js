@@ -126,11 +126,13 @@ Controls.prototype = {
 
   ammoRight: function() {
     var text = game.bird.nextAmmoRight();
+    this.reset();
     this.ammo_span.innerHTML = text;
   },
 
   ammoLeft: function() {
     var text = game.bird.nextAmmoLeft();
+    this.reset();
     this.ammo_span.innerHTML = text;
   },
 
