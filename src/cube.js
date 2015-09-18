@@ -10,6 +10,8 @@ var Cube = function(position)
 
   ThreeObject.call(this);
 
+  this.hit_sound = new Audio("sounds/blockhit.wav");
+
   // Create the BoxGeometry and material and add to scene
   this.geometry = new THREE.BoxGeometry(3, 3, 10);
   this.material = new THREE.MeshLambertMaterial({ map: Cube.TEXTURE });
@@ -17,7 +19,14 @@ var Cube = function(position)
 
   this.object.castShadow = true;
   this.object.position.set(position.x, position.y, position.z);
+  this.object.addEventListener('collision', this.handleCollision.bind(this));
   base.addToScene(this.object);
 }
 
 Cube.prototype = Object.create(ThreeObject.prototype);
+
+Cube.prototype.handleCollision = function(object)
+{
+  if(object == game.bird.object)
+    this.hit_sound.play();
+}

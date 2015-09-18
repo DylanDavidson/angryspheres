@@ -6,6 +6,8 @@ var Game = function()
   this.banner = new Banner();
   this.castle_factory = new CastleFactory();
 
+  this.explosion_sound = new Audio("sounds/explosion.ogg");
+
   this.current_level = 0;
   this.loadLevel();
 }
@@ -29,6 +31,7 @@ Game.prototype = {
   },
 
   removeEnemy: function(enemy) {
+   this.explosion_sound.play();
    nextLevel = this.castle_factory.removeEnemy(enemy);
    if(nextLevel) {
      this.current_level += 1;

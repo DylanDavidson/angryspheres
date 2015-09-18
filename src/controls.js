@@ -33,6 +33,8 @@ var Controls = function()
   this.addClickListeners();
 
   window.onkeydown = this.onkeydown.bind(this);
+
+  this.cannon_sound = new Audio("sounds/cannon.wav");
 }
 
 Controls.prototype = {
@@ -48,11 +50,11 @@ Controls.prototype = {
     else if(key == 40) // Down Arrow
       this.angleDown();
     else if(key == 13) // Enter
-      this.fire();
+      this.ammo_left()
     else if(key == 82) // R
       this.reset();
     else if(key == 32) // Space
-      this.ammoRight();
+      this.fire();
     else if(key == 87) // W
       this.velocityUp();
     else if(key == 83) // S
@@ -139,7 +141,7 @@ Controls.prototype = {
   fire: function() {
     if(this.fire_disabled)
       return;
-
+    this.cannon_sound.play();
     this.fire_button.classList.add('disabled');
     this.fire_disabled = true;
     game.bird.fire(this.velocity, this.angle, this.direction);
