@@ -7,6 +7,12 @@ var Game = function()
   this.castle_factory = new CastleFactory();
 
   this.explosion_sound = new Audio("sounds/explosion.ogg");
+  this.soundtrack = new Audio("sounds/soundtrack.wav");
+  this.soundtrack.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+  }, false);
+  this.soundtrack.play();
 
   this.current_level = 0;
   this.loadLevel();
