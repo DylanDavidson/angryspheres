@@ -74,12 +74,56 @@ CastleFactory.LEVELS = [
     cubes: [
       new THREE.Vector3(0, 50, 5.5),
       new THREE.Vector3(-5, 55, 5.5),
-      new THREE.Vector3(5, 55, 5.5)
+      new THREE.Vector3(5, 55, 5.5),
+      new THREE.Vector3(0, 55, 5.5)
     ],
     enemies: [
       new THREE.Vector3(0, 50, 13),
       new THREE.Vector3(-5, 55, 13),
       new THREE.Vector3(5, 55, 13)
+    ]
+  },
+  {
+    cubes: [
+      new THREE.Vector3(0, 25, 5.5),
+      new THREE.Vector3(0, 25, 16),
+      new THREE.Vector3(0, 30, 5.5),
+      new THREE.Vector3(0, 35, 5.5),
+      new THREE.Vector3(0, 45, 5.5),
+      new THREE.Vector3(0, 50, 5.5),
+      new THREE.Vector3(0, 55, 5.5),
+      new THREE.Vector3(0, 60, 5.5)
+    ],
+    enemies: [
+      new THREE.Vector3(0, 45, 13),
+      new THREE.Vector3(0, 50, 13),
+      new THREE.Vector3(0, 55, 13)
+    ]
+  },
+  {
+    cubes: [
+      new THREE.Vector3(0, 40, 5.5),
+      new THREE.Vector3(3, 40, 5.5),
+      new THREE.Vector3(-3, 40, 5.5),
+      new THREE.Vector3(6, 40, 5.5),
+      new THREE.Vector3(-6, 40, 5.5),
+      new THREE.Vector3(0, 43, 5.5),
+      new THREE.Vector3(3, 43, 5.5),
+      new THREE.Vector3(-3, 43, 5.5),
+      new THREE.Vector3(6, 43, 5.5),
+      new THREE.Vector3(-6, 43, 5.5),
+      new THREE.Vector3(0, 46, 5.5),
+      new THREE.Vector3(3, 46, 5.5),
+      new THREE.Vector3(-3, 46, 5.5),
+      new THREE.Vector3(6, 46, 5.5),
+      new THREE.Vector3(-6, 46, 5.5),
+      new THREE.Vector3(0, 40, 16),
+      new THREE.Vector3(6, 40, 16),
+      new THREE.Vector3(-6, 40, 16)
+    ],
+    enemies: [
+      new THREE.Vector3(-3, 45, 13),
+      new THREE.Vector3(3, 45, 13)
     ]
   },
   {
